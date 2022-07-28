@@ -15,7 +15,7 @@ public partial class PlayLibraryVideoPage : ContentPage
         button.IsEnabled = false;
 
         var pickedVideo = await MediaPicker.PickVideoAsync();
-        if (!string.IsNullOrWhiteSpace(pickedVideo.FileName))
+        if (!string.IsNullOrWhiteSpace(pickedVideo?.FileName))
         {
             video.Source = new FileVideoSource
             {
@@ -30,5 +30,4 @@ public partial class PlayLibraryVideoPage : ContentPage
     {
         video.Handler?.DisconnectHandler();
     }
-
 }
