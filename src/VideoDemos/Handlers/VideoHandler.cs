@@ -37,10 +37,5 @@ namespace VideoDemos.Handlers
         public VideoHandler() : base(PropertyMapper, CommandMapper)
         {
         }
-
-        public VideoHandler(IPropertyMapper? propertyMapper = null, CommandMapper? commandMapper = null)
-            : base(propertyMapper ?? PropertyMapper, commandMapper ?? CommandMapper)
-        {
-        }
     }
 }
