@@ -1,12 +1,14 @@
 ﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
+using AndroidX.CoordinatorLayout.Widget;
 using VideoDemos.Controls;
+using Color = Android.Graphics.Color;
 using Uri = Android.Net.Uri;
 
 namespace VideoDemos.Platforms.Android
 {
-    public class MauiVideoPlayer : RelativeLayout
+    public class MauiVideoPlayer : CoordinatorLayout
     {
         VideoView _videoView;
         MediaController _mediaController;    // Used to display transport controls
@@ -19,17 +21,26 @@ namespace VideoDemos.Platforms.Android
             _context = context;
             _video = video;
 
-            // Save the VideoView for future reference
-            _videoView = new VideoView(context);
+            SetBackgroundColor(Color.Black);
 
-            // Put the VideoView in a RelativeLayout
-            AddView(_videoView);
+            // Create a RelativeLayout for sizing the video
+            RelativeLayout relativeLayout = new RelativeLayout(_context)
+            {
+                LayoutParameters = new CoordinatorLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent)
+                {
+                    Gravity = (int)GravityFlags.Center
+                }
+            };
 
-            // Center the VideoView in the RelativeLayout
-            LayoutParams layoutParams =
-                new LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
-            layoutParams.AddRule(LayoutRules.CenterInParent);
-            _videoView.LayoutParameters = layoutParams;
+            // Create a ViedoView and position it in the RelativeLayout
+            _videoView = new VideoView(context)
+            {
+                LayoutParameters = new RelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent)
+            };
+
+            // Add the views to the layouts
+            relativeLayout.AddView(_videoView);
+            AddView(relativeLayout);
 
             // Handle events
             _videoView.Prepared += OnVideoViewPrepared;
