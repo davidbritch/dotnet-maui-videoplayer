@@ -1,5 +1,4 @@
-﻿#nullable enable
-using Microsoft.Maui.Handlers;
+﻿using Microsoft.Maui.Handlers;
 using VideoDemos.Controls;
 using VideoDemos.Platforms.MaciOS;
 
@@ -8,7 +7,7 @@ namespace VideoDemos.Handlers
     public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
     {
         protected override MauiVideoPlayer CreatePlatformView() => new MauiVideoPlayer(VirtualView);
- 
+
         protected override void ConnectHandler(MauiVideoPlayer platformView)
         {
             base.ConnectHandler(platformView);
@@ -31,7 +30,7 @@ namespace VideoDemos.Handlers
         {
             handler?.PlatformView.UpdateSource();
         }
-                
+
         public static void MapPosition(IVideoHandler handler, IVideo video)
         {
             handler?.PlatformView.UpdatePosition();
