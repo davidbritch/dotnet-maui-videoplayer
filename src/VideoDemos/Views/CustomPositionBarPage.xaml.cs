@@ -4,10 +4,10 @@ namespace VideoDemos.Views;
 
 public partial class CustomPositionBarPage : ContentPage
 {
-	public CustomPositionBarPage()
-	{
-		InitializeComponent();
-	}
+    public CustomPositionBarPage()
+    {
+        InitializeComponent();
+    }
 
     void OnPlayPauseButtonClicked(object sender, EventArgs args)
     {

@@ -2,10 +2,10 @@ namespace VideoDemos.Views;
 
 public partial class BindToVideoPlayerPage : ContentPage
 {
-	public BindToVideoPlayerPage()
-	{
-		InitializeComponent();
-	}
+    public BindToVideoPlayerPage()
+    {
+        InitializeComponent();
+    }
 
     void OnContentPageUnloaded(object sender, EventArgs e)
     {

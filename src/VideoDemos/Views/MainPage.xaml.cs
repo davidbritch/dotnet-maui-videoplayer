@@ -7,8 +7,8 @@ public partial class MainPage : ContentPage
     public ICommand NavigateCommand { get; private set; }
 
     public MainPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         NavigateCommand = new Command<Type>(async (Type pageType) =>
         {

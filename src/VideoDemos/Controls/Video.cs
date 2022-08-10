@@ -92,16 +92,9 @@ namespace VideoDemos.Controls
 
         #region Events
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public event EventHandler UpdateStatus;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public event EventHandler<VideoPositionEventArgs> PlayRequested;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public event EventHandler<VideoPositionEventArgs> PauseRequested;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
         public event EventHandler<VideoPositionEventArgs> StopRequested;
 
         #endregion

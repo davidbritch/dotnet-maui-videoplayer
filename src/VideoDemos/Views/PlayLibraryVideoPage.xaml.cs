@@ -4,13 +4,13 @@ namespace VideoDemos.Views;
 
 public partial class PlayLibraryVideoPage : ContentPage
 {
-	public PlayLibraryVideoPage()
-	{
-		InitializeComponent();
-	}
+    public PlayLibraryVideoPage()
+    {
+        InitializeComponent();
+    }
 
-	async void OnShowVideoLibraryClicked(object sender, EventArgs e)
-	{
+    async void OnShowVideoLibraryClicked(object sender, EventArgs e)
+    {
         Button button = sender as Button;
         button.IsEnabled = false;
 

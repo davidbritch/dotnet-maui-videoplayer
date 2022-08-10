@@ -4,10 +4,10 @@ namespace VideoDemos.Views;
 
 public partial class SelectWebVideoPage : ContentPage
 {
-	public SelectWebVideoPage()
-	{
-		InitializeComponent();
-	}
+    public SelectWebVideoPage()
+    {
+        InitializeComponent();
+    }
 
     void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {

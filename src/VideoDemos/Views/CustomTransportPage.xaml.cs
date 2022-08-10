@@ -4,10 +4,10 @@ namespace VideoDemos.Views;
 
 public partial class CustomTransportPage : ContentPage
 {
-	public CustomTransportPage()
-	{
-		InitializeComponent();
-	}
+    public CustomTransportPage()
+    {
+        InitializeComponent();
+    }
 
     void OnPlayPauseButtonClicked(object sender, EventArgs args)
     {
