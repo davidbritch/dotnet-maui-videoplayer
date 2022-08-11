@@ -85,7 +85,7 @@ namespace VideoDemos.Controls
         public TimeSpan TimeToEnd
         {
             get { return (TimeSpan)GetValue(TimeToEndProperty); }
-            set { SetValue(TimeToEndPropertyKey, value); }
+            private set { SetValue(TimeToEndPropertyKey, value); }
         }
 
         #endregion
