@@ -100,7 +100,7 @@ namespace VideoDemos.Controls
         #endregion
 
         IDispatcherTimer _timer;
-       
+
         public Video()
         {
             _timer = Dispatcher.CreateTimer();
