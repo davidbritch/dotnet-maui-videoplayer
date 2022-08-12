@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Handlers;
+﻿#nullable enable
+using Microsoft.Maui.Handlers;
 using Microsoft.UI.Xaml;
 using VideoDemos.Controls;
 

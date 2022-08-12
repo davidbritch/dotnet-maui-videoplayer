@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Handlers;
+﻿#nullable enable
+using Microsoft.Maui.Handlers;
 using VideoDemos.Controls;
 using VideoDemos.Platforms.MaciOS;
 
