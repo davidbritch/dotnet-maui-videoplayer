@@ -1,4 +1,4 @@
-using VideoDemos.Controls;
+using VideoPlayback.Controls;
 
 namespace VideoDemos.Views;
 

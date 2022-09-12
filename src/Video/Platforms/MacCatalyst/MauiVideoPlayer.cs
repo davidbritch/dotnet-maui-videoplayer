@@ -4,9 +4,9 @@ using CoreMedia;
 using Foundation;
 using System.Diagnostics;
 using UIKit;
-using VideoDemos.Controls;
+using VideoPlayback.Controls;
 
-namespace VideoDemos.Platforms.MaciOS
+namespace VideoPlayback.Platforms.MaciOS
 {
     public class MauiVideoPlayer : UIView
     {

@@ -1,9 +1,9 @@
 ﻿#nullable enable
 using Microsoft.Maui.Handlers;
 using Microsoft.UI.Xaml;
-using VideoDemos.Controls;
+using Video.Controls;
 
-namespace VideoDemos.Handlers
+namespace Video.Handlers
 {
     public partial class VideoHandler : ViewHandler<IVideo, FrameworkElement>
     {

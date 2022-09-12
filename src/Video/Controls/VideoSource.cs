@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VideoDemos.Controls
+namespace VideoPlayback.Controls
 {
     
     [TypeConverter(typeof(VideoSourceConverter))]

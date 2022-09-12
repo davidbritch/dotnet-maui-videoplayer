@@ -1,5 +1,5 @@
-﻿using VideoDemos.Controls;
-using VideoDemos.Handlers;
+﻿using VideoPlayback.Controls;
+using VideoPlayback.Handlers;
 
 namespace VideoDemos;
 
