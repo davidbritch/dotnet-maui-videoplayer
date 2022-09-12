@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VideoDemos.Controls
+namespace VideoPlayback.Controls
 {
     public class Video : View, IVideo, IVideoController
     {

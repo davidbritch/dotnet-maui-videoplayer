@@ -1,4 +1,4 @@
-﻿namespace VideoDemos.Controls
+﻿namespace VideoPlayback.Controls
 {
     public class FileVideoSource : VideoSource
     {

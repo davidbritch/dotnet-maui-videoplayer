@@ -1,15 +1,15 @@
 ﻿#if IOS || MACCATALYST
-using PlatformView = VideoDemos.Platforms.MaciOS.MauiVideoPlayer;
+using PlatformView = VideoPlayback.Platforms.MaciOS.MauiVideoPlayer;
 #elif ANDROID
-using PlatformView = VideoDemos.Platforms.Android.MauiVideoPlayer;
+using PlatformView = VideoPlayback.Platforms.Android.MauiVideoPlayer;
 #elif WINDOWS
 using PlatformView = Microsoft.UI.Xaml.FrameworkElement;
 #elif (NETSTANDARD || !PLATFORM) || (NET6_0 && !IOS && !ANDROID)
 using PlatformView = System.Object;
 #endif
-using VideoDemos.Controls;
+using VideoPlayback.Controls;
 
-namespace VideoDemos.Handlers
+namespace VideoPlayback.Handlers
 {
     public interface IVideoHandler : IViewHandler
     {

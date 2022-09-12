@@ -1,13 +1,13 @@
 ﻿#nullable enable
 using Microsoft.Maui.Handlers;
-using VideoDemos.Controls;
-using VideoDemos.Platforms.Android;
+using VideoPlayback.Controls;
+using VideoPlayback.Platforms.MaciOS;
 
-namespace VideoDemos.Handlers
+namespace VideoPlayback.Handlers
 {
     public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
     {
-        protected override MauiVideoPlayer CreatePlatformView() => new MauiVideoPlayer(Context, VirtualView);
+        protected override MauiVideoPlayer CreatePlatformView() => new MauiVideoPlayer(VirtualView);
 
         protected override void ConnectHandler(MauiVideoPlayer platformView)
         {
@@ -24,17 +24,17 @@ namespace VideoDemos.Handlers
 
         public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
         {
-            handler.PlatformView?.UpdateTransportControlsEnabled();
+            handler?.PlatformView.UpdateTransportControlsEnabled();
         }
 
         public static void MapSource(IVideoHandler handler, IVideo video)
         {
-            handler.PlatformView?.UpdateSource();
+            handler?.PlatformView.UpdateSource();
         }
 
         public static void MapPosition(IVideoHandler handler, IVideo video)
         {
-            handler.PlatformView?.UpdatePosition();
+            handler?.PlatformView.UpdatePosition();
         }
 
         public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
