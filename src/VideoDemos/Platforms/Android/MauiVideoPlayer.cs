@@ -11,12 +11,12 @@ namespace VideoDemos.Platforms.Android
     public class MauiVideoPlayer : CoordinatorLayout
     {
         VideoView _videoView;
-        MediaController _mediaController;    // Used to display transport controls
+        MediaController _mediaController;
         bool _isPrepared;
         Context _context;
-        IVideo _video;
+        Video _video;
 
-        public MauiVideoPlayer(Context context, IVideo video) : base(context)
+        public MauiVideoPlayer(Context context, Video video) : base(context)
         {
             _context = context;
             _video = video;
@@ -32,13 +32,13 @@ namespace VideoDemos.Platforms.Android
                 }
             };
 
-            // Create a ViedoView and position it in the RelativeLayout
+            // Create a VideoView and position it in the RelativeLayout
             _videoView = new VideoView(context)
             {
                 LayoutParameters = new RelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent)
             };
 
-            // Add the views to the layouts
+            // Add to the layouts
             relativeLayout.AddView(_videoView);
             AddView(relativeLayout);
 
@@ -127,12 +127,6 @@ namespace VideoDemos.Platforms.Android
             }
         }
 
-        void OnVideoViewPrepared(object sender, EventArgs args)
-        {
-            _isPrepared = true;
-            ((IVideoController)_video).Duration = TimeSpan.FromMilliseconds(_videoView.Duration);
-        }
-
         public void UpdateStatus()
         {
             VideoStatus status = VideoStatus.NotReady;
@@ -170,5 +164,12 @@ namespace VideoDemos.Platforms.Android
             // Ensure the video can be played again
             _videoView.Resume();
         }
+
+        void OnVideoViewPrepared(object sender, EventArgs args)
+        {
+            _isPrepared = true;
+            ((IVideoController)_video).Duration = TimeSpan.FromMilliseconds(_videoView.Duration);
+        }
+
     }
 }

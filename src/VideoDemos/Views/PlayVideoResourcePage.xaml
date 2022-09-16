@@ -16,7 +16,7 @@
                             Value="AppleVideo.mp4" />
                         <On Platform="MacCatalyst"
                             Value="AppleVideo.mp4" />
-                        <On Platform="Windows"
+                        <On Platform="WinUI"
                             Value="WindowsVideo.mp4" />
                     </OnPlatform>
                 </controls:ResourceVideoSource.Path>
