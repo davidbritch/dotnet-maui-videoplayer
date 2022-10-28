@@ -26,11 +26,11 @@ namespace VideoDemos.Platforms.MaciOS
 
             // Set Player property to AVPlayer
             _player = new AVPlayer();
-            _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.None;
             _playerViewController.Player = _player;
 
             // Use the View from the controller as the native control
             _playerViewController.View.Frame = this.Bounds;
+
             AddSubview(_playerViewController.View);
         }
 
@@ -103,7 +103,12 @@ namespace VideoDemos.Platforms.MaciOS
         {
             DestroyPlayedToEndObserver();
             if (_video.IsLooping)
+            {
+                _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.None;
                 _playedToEndObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, PlayedToEnd);
+            }
+            else
+                _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.Pause;
         }
 
         public void UpdatePosition()
