@@ -95,6 +95,11 @@ namespace VideoDemos.Platforms.MaciOS
             }
         }
 
+        public void UpdateIsLooping()
+        {
+
+        }
+
         public void UpdatePosition()
         {
             TimeSpan controlPosition = ConvertTime(_player.CurrentTime);

@@ -18,6 +18,7 @@ namespace VideoDemos.Handlers
         {
             [nameof(Video.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
             [nameof(Video.Source)] = MapSource,
+            [nameof(Video.IsLooping)] = MapIsLooping,
             [nameof(Video.Position)] = MapPosition
         };
 

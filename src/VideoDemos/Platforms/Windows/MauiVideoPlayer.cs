@@ -80,6 +80,11 @@ namespace VideoDemos.Platforms.Windows
             }
         }
 
+        public void UpdateIsLooping()
+        {
+            _mediaPlayerElement.MediaPlayer.IsLoopingEnabled = _video.IsLooping;
+        }
+
         public void UpdatePosition()
         {
             if (_isMediaPlayerAttached)

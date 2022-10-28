@@ -5,7 +5,8 @@
              x:Class="VideoDemos.Views.PlayVideoResourcePage"
              Unloaded="OnContentPageUnloaded"
              Title="Play video resource">
-    <controls:Video x:Name="video">
+    <controls:Video x:Name="video"
+                    IsLooping="true">
         <controls:Video.Source>
             <controls:ResourceVideoSource>
                 <controls:ResourceVideoSource.Path>

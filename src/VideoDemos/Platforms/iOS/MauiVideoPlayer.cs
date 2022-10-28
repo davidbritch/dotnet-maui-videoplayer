@@ -2,6 +2,7 @@
 using AVKit;
 using CoreMedia;
 using Foundation;
+using GameController;
 using System.Diagnostics;
 using UIKit;
 using VideoDemos.Controls;
@@ -24,6 +25,7 @@ namespace VideoDemos.Platforms.MaciOS
 
             // Set Player property to AVPlayer
             _player = new AVPlayer();
+            _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.None;
             _playerViewController.Player = _player;
 
             // Use the View from the controller as the native control
@@ -93,6 +95,24 @@ namespace VideoDemos.Platforms.MaciOS
             {
                 _player.Play();
             }
+        }
+
+        public void UpdateIsLooping()
+        {
+            if (_video.IsLooping)
+            {
+                NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, (notify) =>
+                {
+                    _player.Seek(CMTime.Zero);
+                    notify.Dispose();
+                });
+            }
+            //if (Element.IsLooping)
+            //{
+            //    avPlayerViewController.Player?.Seek(CMTime.Zero);
+            //    Controller.Position = Position;
+            //    avPlayerViewController.Player?.Play();
+            //}
         }
 
         public void UpdatePosition()
