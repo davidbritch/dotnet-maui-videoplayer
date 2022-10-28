@@ -2,6 +2,7 @@
 using AVKit;
 using CoreMedia;
 using Foundation;
+using GameController;
 using System.Diagnostics;
 using UIKit;
 using VideoDemos.Controls;
@@ -14,6 +15,7 @@ namespace VideoDemos.Platforms.MaciOS
         AVPlayerItem _playerItem;
         AVPlayerViewController _playerViewController;
         Video _video;
+        NSObject? _playedToEndObserver;
 
         public MauiVideoPlayer(Video video)
         {
@@ -24,6 +26,7 @@ namespace VideoDemos.Platforms.MaciOS
 
             // Set Player property to AVPlayer
             _player = new AVPlayer();
+            _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.None;
             _playerViewController.Player = _player;
 
             // Use the View from the controller as the native control
@@ -37,6 +40,7 @@ namespace VideoDemos.Platforms.MaciOS
             {
                 if (_player != null)
                 {
+                    DestroyPlayedToEndObserver();
                     _player.ReplaceCurrentItemWithPlayerItem(null);
                     _player.Dispose();
                 }
@@ -97,7 +101,9 @@ namespace VideoDemos.Platforms.MaciOS
 
         public void UpdateIsLooping()
         {
-
+            DestroyPlayedToEndObserver();
+            if (_video.IsLooping)
+                _playedToEndObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, PlayedToEnd);
         }
 
         public void UpdatePosition()
@@ -107,11 +113,6 @@ namespace VideoDemos.Platforms.MaciOS
             {
                 _player.Seek(CMTime.FromSeconds(_video.Position.TotalSeconds, 1));
             }
-        }
-
-        TimeSpan ConvertTime(CMTime cmTime)
-        {
-            return TimeSpan.FromSeconds(Double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
         }
 
         public void UpdateStatus()
@@ -159,6 +160,34 @@ namespace VideoDemos.Platforms.MaciOS
             _player.Pause();
             _player.Seek(new CMTime(0, 1));
             Debug.WriteLine($"Video stopped at {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
+        }
+
+        TimeSpan ConvertTime(CMTime cmTime)
+        {
+            return TimeSpan.FromSeconds(Double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
+        }
+
+        void PlayedToEnd(NSNotification notification)
+        {
+            if (_video == null || notification.Object != _playerViewController.Player?.CurrentItem)
+                return;
+
+            _playerViewController.Player?.Seek(CMTime.Zero);
+        }
+
+        void DestroyPlayedToEndObserver()
+        {
+            if (_playedToEndObserver != null)
+            {
+                NSNotificationCenter.DefaultCenter.RemoveObserver(_playedToEndObserver);
+                DisposeObserver(ref _playedToEndObserver);
+            }
+        }
+
+        void DisposeObserver(ref NSObject? disposable)
+        {
+            disposable?.Dispose();
+            disposable = null;
         }
     }
 }
