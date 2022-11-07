@@ -4,7 +4,7 @@ using PlatformView = VideoDemos.Platforms.MaciOS.MauiVideoPlayer;
 using PlatformView = VideoDemos.Platforms.Android.MauiVideoPlayer;
 #elif WINDOWS
 using PlatformView = VideoDemos.Platforms.Windows.MauiVideoPlayer;
-#elif (NETSTANDARD || !PLATFORM) || (NET6_0 && !IOS && !ANDROID)
+#elif (NETSTANDARD || !PLATFORM) || (NET6_0_OR_GREATER && !IOS && !ANDROID)
 using PlatformView = System.Object;
 #endif
 using VideoDemos.Controls;
@@ -18,6 +18,7 @@ namespace VideoDemos.Handlers
         {
             [nameof(Video.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
             [nameof(Video.Source)] = MapSource,
+            [nameof(Video.IsLooping)] = MapIsLooping,
             [nameof(Video.Position)] = MapPosition
         };
 
