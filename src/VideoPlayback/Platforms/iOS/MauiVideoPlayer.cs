@@ -1,13 +1,12 @@
-﻿using AVFoundation;
+﻿using System.Diagnostics;
+using AVFoundation;
 using AVKit;
 using CoreMedia;
 using Foundation;
-using GameController;
-using System.Diagnostics;
 using UIKit;
-using VideoDemos.Controls;
+using VideoPlayback.Controls;
 
-namespace VideoDemos.Platforms.MaciOS
+namespace VideoPlayback.Platforms.iOS
 {
     public class MauiVideoPlayer : UIView
     {
@@ -15,22 +14,29 @@ namespace VideoDemos.Platforms.MaciOS
         AVPlayerItem _playerItem;
         AVPlayerViewController _playerViewController;
         Video _video;
-        NSObject? _playedToEndObserver;
+        NSObject _playedToEndObserver;
 
         public MauiVideoPlayer(Video video)
         {
             _video = video;
 
-            // Create AVPlayerViewController
             _playerViewController = new AVPlayerViewController();
-
-            // Set Player property to AVPlayer
             _player = new AVPlayer();
             _playerViewController.Player = _player;
+            _playerViewController.View.Frame = Bounds;
 
-            // Use the View from the controller as the native control
-            _playerViewController.View.Frame = this.Bounds;
+#if IOS16_0_OR_GREATER
+            // On iOS 16 the AVPlayerViewController has to be added to the parent ViewController, otherwise the transport controls won't be displayed.
+            var viewController = WindowStateManager.Default.GetCurrentUIViewController();
 
+            // Zero out the safe area insets of the AVPlayerViewController
+            UIEdgeInsets insets = viewController.View.SafeAreaInsets;
+            _playerViewController.AdditionalSafeAreaInsets = new UIEdgeInsets(insets.Top * -1, insets.Left, insets.Bottom * -1, insets.Right);
+
+            // Add the View from the AVPlayerViewController to the parent ViewController
+            viewController.View.AddSubview(_playerViewController.View);
+#endif
+            // Use the View from the AVPlayerViewController as the native control
             AddSubview(_playerViewController.View);
         }
 
@@ -169,7 +175,7 @@ namespace VideoDemos.Platforms.MaciOS
 
         TimeSpan ConvertTime(CMTime cmTime)
         {
-            return TimeSpan.FromSeconds(Double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
+            return TimeSpan.FromSeconds(double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
         }
 
         void PlayedToEnd(NSNotification notification)
@@ -189,7 +195,7 @@ namespace VideoDemos.Platforms.MaciOS
             }
         }
 
-        void DisposeObserver(ref NSObject? disposable)
+        void DisposeObserver(ref NSObject disposable)
         {
             disposable?.Dispose();
             disposable = null;

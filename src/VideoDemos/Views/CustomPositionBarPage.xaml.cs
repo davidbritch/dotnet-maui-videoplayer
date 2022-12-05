@@ -1,5 +1,3 @@
-using VideoDemos.Controls;
-
 namespace VideoDemos.Views;
 
 public partial class CustomPositionBarPage : ContentPage

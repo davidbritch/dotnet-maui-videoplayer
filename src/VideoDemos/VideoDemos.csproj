@@ -72,6 +72,10 @@
 	  <None Remove="Resources\Raw\AppleVideo.mp4" />
 	  <None Remove="Resources\Raw\WindowsVideo.mp4" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\VideoPlayback\VideoPlayback.csproj" />
+	</ItemGroup>
 		
 	<ItemGroup>
 	  <MauiXaml Update="Views\BindToVideoPlayerPage.xaml">

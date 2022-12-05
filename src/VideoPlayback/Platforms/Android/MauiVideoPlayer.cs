@@ -3,7 +3,7 @@ using Android.Media;
 using Android.Views;
 using Android.Widget;
 using AndroidX.CoordinatorLayout.Widget;
-using VideoDemos.Controls;
+using VideoPlayback.Controls;
 using Color = Android.Graphics.Color;
 using Uri = Android.Net.Uri;
 

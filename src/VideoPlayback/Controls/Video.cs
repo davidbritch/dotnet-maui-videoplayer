@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VideoDemos.Controls
+namespace VideoPlayback.Controls
 {
     public class Video : View, IVideoController
     {
@@ -124,27 +124,27 @@ namespace VideoDemos.Controls
         {
             VideoPositionEventArgs args = new VideoPositionEventArgs(Position);
             PlayRequested?.Invoke(this, args);
-            Handler?.Invoke(nameof(Video.PlayRequested), args);
+            Handler?.Invoke(nameof(PlayRequested), args);
         }
 
         public void Pause()
         {
             VideoPositionEventArgs args = new VideoPositionEventArgs(Position);
             PauseRequested?.Invoke(this, args);
-            Handler?.Invoke(nameof(Video.PauseRequested), args);
+            Handler?.Invoke(nameof(PauseRequested), args);
         }
 
         public void Stop()
         {
             VideoPositionEventArgs args = new VideoPositionEventArgs(Position);
             StopRequested?.Invoke(this, args);
-            Handler?.Invoke(nameof(Video.StopRequested), args);
+            Handler?.Invoke(nameof(StopRequested), args);
         }
 
         void OnTimerTick(object sender, EventArgs e)
         {
             UpdateStatus?.Invoke(this, EventArgs.Empty);
-            Handler?.Invoke(nameof(Video.UpdateStatus));
+            Handler?.Invoke(nameof(UpdateStatus));
         }
 
         void SetTimeToEnd()
