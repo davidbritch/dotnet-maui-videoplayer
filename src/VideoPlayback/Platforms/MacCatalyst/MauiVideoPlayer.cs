@@ -4,17 +4,18 @@ using CoreMedia;
 using Foundation;
 using System.Diagnostics;
 using UIKit;
-using VideoPlayback.Controls;
 
-namespace VideoPlayback.Platforms.MacCatalyst
+namespace VideoPlayback.Platforms.MaciOS
 {
+    using Controls;
+
     public class MauiVideoPlayer : UIView
     {
         AVPlayer _player;
         AVPlayerItem _playerItem;
         AVPlayerViewController _playerViewController;
         Video _video;
-        NSObject _playedToEndObserver;
+        NSObject? _playedToEndObserver;
 
         public MauiVideoPlayer(Video video)
         {
@@ -28,7 +29,7 @@ namespace VideoPlayback.Platforms.MacCatalyst
             _playerViewController.Player = _player;
 
             // Use the View from the controller as the native control
-            _playerViewController.View.Frame = Bounds;
+            _playerViewController.View.Frame = this.Bounds;
 
             AddSubview(_playerViewController.View);
         }
@@ -168,7 +169,7 @@ namespace VideoPlayback.Platforms.MacCatalyst
 
         TimeSpan ConvertTime(CMTime cmTime)
         {
-            return TimeSpan.FromSeconds(double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
+            return TimeSpan.FromSeconds(Double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
         }
 
         void PlayedToEnd(NSNotification notification)
@@ -188,7 +189,7 @@ namespace VideoPlayback.Platforms.MacCatalyst
             }
         }
 
-        void DisposeObserver(ref NSObject disposable)
+        void DisposeObserver(ref NSObject? disposable)
         {
             disposable?.Dispose();
             disposable = null;

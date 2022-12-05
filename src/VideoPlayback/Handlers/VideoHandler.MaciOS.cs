@@ -1,9 +1,8 @@
-﻿#nullable enable
-using Microsoft.Maui.Handlers;
+﻿using Microsoft.Maui.Handlers;
 using VideoPlayback.Controls;
-using VideoPlayback.Platforms.MacCatalyst;
+using VideoPlayback.Platforms.MaciOS;
 
-namespace VideoDemos.Platforms.MaciOS
+namespace VideoPlayback.Handlers
 {
     public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
     {

@@ -7,7 +7,7 @@ using VideoPlayback.Controls;
 using Color = Android.Graphics.Color;
 using Uri = Android.Net.Uri;
 
-namespace VideoDemos.Platforms.Android
+namespace VideoPlayback.Platforms.Android
 {
     public class MauiVideoPlayer : CoordinatorLayout, MediaPlayer.IOnPreparedListener
     {

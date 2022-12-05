@@ -6,7 +6,7 @@ using Foundation;
 using UIKit;
 using VideoPlayback.Controls;
 
-namespace VideoPlayback.Platforms.iOS
+namespace VideoPlayback.Platforms.MaciOS
 {
     public class MauiVideoPlayer : UIView
     {

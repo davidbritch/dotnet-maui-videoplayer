@@ -15,7 +15,7 @@ public partial class PlayLibraryVideoPage : ContentPage
         var pickedVideo = await MediaPicker.PickVideoAsync();
         if (!string.IsNullOrWhiteSpace(pickedVideo?.FileName))
         {
-            video.Source = new FileVideoSource
+            video.Source = new VideoPlayback.Controls.FileVideoSource
             {
                 File = pickedVideo.FullPath
             };

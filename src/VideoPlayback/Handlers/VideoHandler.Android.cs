@@ -1,9 +1,9 @@
 ﻿#nullable enable
 using Microsoft.Maui.Handlers;
-using VideoDemos.Platforms.Android;
+using VideoPlayback.Platforms.Android;
 using VideoPlayback.Controls;
 
-namespace VideoDemos.Handlers
+namespace VideoPlayback.Handlers
 {
     public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
     {

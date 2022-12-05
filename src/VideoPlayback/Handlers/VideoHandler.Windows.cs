@@ -1,9 +1,9 @@
 ﻿#nullable enable
 using Microsoft.Maui.Handlers;
-using VideoDemos.Platforms.Windows;
+using VideoPlayback.Platforms.Windows;
 using VideoPlayback.Controls;
 
-namespace VideoDemos.Handlers
+namespace VideoPlayback.Handlers
 {
     public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
     {
@@ -34,7 +34,7 @@ namespace VideoDemos.Handlers
 
         public static void MapIsLooping(VideoHandler handler, Video video)
         {
-            handler.PlatformView?.UpdateIsLooping();
+            //handler.PlatformView?.UpdateIsLooping();
         }
 
         public static void MapPosition(VideoHandler handler, Video video)
