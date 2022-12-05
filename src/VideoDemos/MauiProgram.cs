@@ -1,7 +1,6 @@
-﻿using VideoDemos.Controls;
-using VideoDemos.Handlers;
-
-namespace VideoDemos;
+﻿namespace VideoDemos;
+using VideoPlayback.Controls;
+using VideoPlayback.Handlers;
 
 public static class MauiProgram
 {

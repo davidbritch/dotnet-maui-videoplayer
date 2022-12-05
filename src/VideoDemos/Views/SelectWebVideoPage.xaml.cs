@@ -1,5 +1,3 @@
-using VideoDemos.Controls;
-
 namespace VideoDemos.Views;
 
 public partial class SelectWebVideoPage : ContentPage
@@ -12,7 +10,7 @@ public partial class SelectWebVideoPage : ContentPage
     void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string key = ((string)e.CurrentSelection.FirstOrDefault()).Replace(" ", "").Replace("'", "");
-        video.Source = (UriVideoSource)Application.Current.Resources[key];
+        video.Source = (VideoPlayback.Controls.UriVideoSource)Application.Current.Resources[key];
     }
 
     void OnContentPageUnloaded(object sender, EventArgs e)

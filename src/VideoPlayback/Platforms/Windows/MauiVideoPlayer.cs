@@ -1,11 +1,11 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using VideoDemos.Controls;
+﻿using VideoPlayback.Controls;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.Storage;
+using Microsoft.UI.Xaml.Controls;
 using Grid = Microsoft.UI.Xaml.Controls.Grid;
 
-namespace VideoDemos.Platforms.Windows
+namespace VideoPlayback.Platforms.Windows
 {
     public class MauiVideoPlayer : Grid, IDisposable
     {

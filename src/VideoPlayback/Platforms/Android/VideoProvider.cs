@@ -4,9 +4,9 @@ using Android.Database;
 using Debug = System.Diagnostics.Debug;
 using Uri = Android.Net.Uri;
 
-namespace VideoDemos.Platforms.Android
+namespace VideoPlayback.Platforms.Android
 {
-    [ContentProvider(new string[] { "com.companyname.videodemos" })]
+    [ContentProvider(new string[] { "com.companyname.VideoPlayback" })]
     public class VideoProvider : ContentProvider
     {
         public override AssetFileDescriptor OpenAssetFile(Uri uri, string mode)

@@ -4,9 +4,9 @@ using AVKit;
 using CoreMedia;
 using Foundation;
 using UIKit;
-using VideoDemos.Controls;
+using VideoPlayback.Controls;
 
-namespace VideoDemos.Platforms.MaciOS
+namespace VideoPlayback.Platforms.MaciOS
 {
     public class MauiVideoPlayer : UIView
     {
@@ -14,7 +14,7 @@ namespace VideoDemos.Platforms.MaciOS
         AVPlayerItem _playerItem;
         AVPlayerViewController _playerViewController;
         Video _video;
-        NSObject? _playedToEndObserver;
+        NSObject _playedToEndObserver;
 
         public MauiVideoPlayer(Video video)
         {
@@ -23,7 +23,7 @@ namespace VideoDemos.Platforms.MaciOS
             _playerViewController = new AVPlayerViewController();
             _player = new AVPlayer();
             _playerViewController.Player = _player;
-            _playerViewController.View.Frame = this.Bounds;
+            _playerViewController.View.Frame = Bounds;
 
 #if IOS16_0_OR_GREATER
             // On iOS 16 the AVPlayerViewController has to be added to the parent ViewController, otherwise the transport controls won't be displayed.
@@ -175,7 +175,7 @@ namespace VideoDemos.Platforms.MaciOS
 
         TimeSpan ConvertTime(CMTime cmTime)
         {
-            return TimeSpan.FromSeconds(Double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
+            return TimeSpan.FromSeconds(double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
         }
 
         void PlayedToEnd(NSNotification notification)
@@ -195,7 +195,7 @@ namespace VideoDemos.Platforms.MaciOS
             }
         }
 
-        void DisposeObserver(ref NSObject? disposable)
+        void DisposeObserver(ref NSObject disposable)
         {
             disposable?.Dispose();
             disposable = null;

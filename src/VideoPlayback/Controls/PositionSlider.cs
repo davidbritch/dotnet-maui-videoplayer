@@ -1,4 +1,4 @@
-﻿namespace VideoDemos.Controls
+﻿namespace VideoPlayback.Controls
 {
     public class PositionSlider : Slider
     {
@@ -28,7 +28,7 @@
         public TimeSpan Position
         {
             get { return (TimeSpan)GetValue(PositionProperty); }
-            set { SetValue (PositionProperty, value); }
+            set { SetValue(PositionProperty, value); }
         }
 
         public PositionSlider()
