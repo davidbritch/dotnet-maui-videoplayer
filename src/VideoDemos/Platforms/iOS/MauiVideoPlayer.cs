@@ -37,7 +37,6 @@ namespace VideoDemos.Platforms.MaciOS
                 _playerViewController.AdditionalSafeAreaInsets = new UIEdgeInsets(insets.Top * -1, insets.Left, insets.Bottom * -1, insets.Right);
 
                 // Add the View from the AVPlayerViewController to the parent ViewController
-                viewController.AddChildViewController(_playerViewController);
                 viewController.View.AddSubview(_playerViewController.View);
             }
 #endif
